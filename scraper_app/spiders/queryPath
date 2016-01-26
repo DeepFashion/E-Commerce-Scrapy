@@ -1,0 +1,19 @@
+div class="lifestyle-grid"
+	div class="browse-grid-row"
+		div class="unit size1of3"
+			div class="product-unit unit-3 browse-product new-design quickview-required"
+				div class="pu-visual-section "  // image
+					a data-images: list of all images
+						img src: primary image
+
+				div class="pu-details lastUnit"
+					div class="pu-title fk-font-12"
+						a inner HTML="Rodid Men's Solid Casual Denim Shirt"
+					div class="pu-rating"
+						div class="fk-stars-small" title="4 stars"
+					div class="pu-price"
+						div class="pu-final font-dark-color fk-inline-block"
+							span innerhtml=price
+						div class="lmargin5 pu-discount fk-fontlight fk-font-12 fk-inline-block"
+							span class="pu-old"  : old price
+							span class="pu-off-per" : discount%
