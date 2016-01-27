@@ -1,9 +1,9 @@
 from sqlalchemy.orm import sessionmaker
-from models import Deals, db_connect, create_deals_table, JabongProducts
+from models import FlipkartProducts, db_connect, create_deals_table, JabongProducts
 
 
-class LivingSocialPipeline(object):
-    """Livingsocial pipeline for storing scraped items in the database"""
+class FlipkartPipeline(object):
+    """Flipkart pipeline for storing scraped items in the database"""
     def __init__(self):
         """
         Initializes database connection and sessionmaker.
@@ -20,7 +20,7 @@ class LivingSocialPipeline(object):
 
         """
         session = self.Session()
-        deal = Deals(**item)
+        deal = FlipkartProducts(**item)
 
         try:
             session.add(deal)
@@ -36,7 +36,7 @@ class LivingSocialPipeline(object):
         return item
 
 
-class JabongDataPipeline(object):
+class JabongPipeline(object):
     """JabongData pipeline for storing scraped items in the database"""
     def __init__(self):
         """

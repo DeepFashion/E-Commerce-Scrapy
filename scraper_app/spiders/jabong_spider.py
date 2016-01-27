@@ -2,18 +2,15 @@ from scrapy.spider import BaseSpider
 from scrapy.selector import HtmlXPathSelector
 from scrapy.contrib.loader import XPathItemLoader
 from scrapy.contrib.loader.processor import Join, MapCompose
-
+from jabongURLs import getURL
 from scraper_app.items import JabongData
 
 
 class JabongSpider(BaseSpider):
     """Spider for Jabong Website; Ladies collection: shirts, tees, etc"""
-    name = "jabongSpiderLadiesShirtsTees"
+    name = "JabongBot"
     allowed_domains = ["jabong.com"]
-    start_urls=list()
-    for i in range(1,120):
-        tempUrl="http://www.jabong.com/women/clothing/tops-tees-shirts/?source=topnav_women&ax=1&page="+str(i)+"&limit=100&sortField=popularity&sortBy=desc"
-        start_urls.append(tempUrl)
+    start_urls=getURL()
 
     products_list_xpath = '//*[@id="catalog-product"]/section[2]/div'
     item_fields = {
@@ -33,11 +30,6 @@ class JabongSpider(BaseSpider):
     def parse(self, response):
         """
         Default callback used by Scrapy to process downloaded responses
-
-        Testing contracts:
-        @url http://www.livingsocial.com/cities/15-san-francisco
-        @returns items 1
-        @scrapes title link
 
         """
 

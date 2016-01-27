@@ -20,9 +20,9 @@ def create_deals_table(engine):
     DeclarativeBase.metadata.create_all(engine)
 
 
-class Deals(DeclarativeBase):
+class FlipkartProducts(DeclarativeBase):
     """Sqlalchemy deals model"""
-    __tablename__ = "images"
+    __tablename__ = "flipkartdata"
 
     id = Column(Integer, primary_key=True)
     images = Column('images', String)

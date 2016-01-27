@@ -1,4 +1,6 @@
-BOT_NAME = 'jabongSpiderLadiesShirtsTees'
+SITE_NAME='Flipkart'
+
+BOT_NAME = SITE_NAME+'Bot'
 
 SPIDER_MODULES = ['scraper_app.spiders']
 
@@ -11,4 +13,4 @@ DATABASE = {
     'database': 'test'
 }
 
-ITEM_PIPELINES = ['scraper_app.pipelines.JabongDataPipeline']
+ITEM_PIPELINES = ['scraper_app.pipelines.'+SITE_NAME+'Pipeline']
