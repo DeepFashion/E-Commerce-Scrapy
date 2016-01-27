@@ -9,3 +9,16 @@ class LivingSocialDeal(Item):
     finalPrice = Field()
     initialPrice = Field()
     discount = Field()
+
+class JabongData(Item):
+    product_link= Field()
+    image_320 =Field()
+    image_500 =Field()
+    image_768 =Field()
+    image_1024 =Field()
+    image_1280 =Field()
+    name =Field()
+    brand=Field()
+    previous_price =Field()
+    standard_price =Field()
+    discount =Field()

@@ -4,7 +4,6 @@ from sqlalchemy.engine.url import URL
 
 import settings
 
-
 DeclarativeBase = declarative_base()
 
 def db_connect():
@@ -15,39 +14,22 @@ def db_connect():
     return create_engine(URL(**settings.DATABASE))
 
 
-def create_deals_table(engine):
+def create_jabong_table(engine):
     """"""
     DeclarativeBase.metadata.create_all(engine)
 
 
-class Deals(DeclarativeBase):
-    """Sqlalchemy deals model"""
-    __tablename__ = "images"
-
-    id = Column(Integer, primary_key=True)
-    images = Column('images', String)
-    mainImage = Column('mainImage', String)
-    apparelURL = Column('apparelURL', String)
-    title = Column('title', String)
-    rating = Column('rating', String)
-    finalPrice = Column('finalPrice', String)
-    initialPrice = Column('initialPrice', String)
-    discount = Column('discount', String)
-
-
 class JabongProducts(DeclarativeBase):
     """Sqlalchemy deals model"""
-    __tablename__ = "jabongdata"
+    __tablename__ = "jabongData"
 
     id = Column(Integer, primary_key=True)
-    product_link = Column('product_link', String)
     image_320 = Column('image_320', String)
     image_500 = Column('image_500', String)
     image_768 = Column('image_768', String)
     image_1024 = Column('image_1024', String)
     image_1280 = Column('image_1280', String)
-    brand = Column('brand', String)
-    name = Column('name', String)
-    previous_price = Column('previous_price', String)
-    standard_price = Column('standard_price', String)
-    discount = Column('discount', String)
+    name= Column('name', String)
+    previous_price= Column('previous_price', String)
+    standard_price= Column('standard_price', String)
+    discount= Column('discount', String)

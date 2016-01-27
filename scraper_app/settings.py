@@ -1,4 +1,4 @@
-BOT_NAME = 'livingsocial'
+BOT_NAME = 'jabongSpiderLadiesShirtsTees'
 
 SPIDER_MODULES = ['scraper_app.spiders']
 
@@ -11,4 +11,4 @@ DATABASE = {
     'database': 'test'
 }
 
-ITEM_PIPELINES = ['scraper_app.pipelines.LivingSocialPipeline']
+ITEM_PIPELINES = ['scraper_app.pipelines.JabongDataPipeline']
