@@ -22,3 +22,6 @@ class JabongData(Item):
     previous_price =Field()
     standard_price =Field()
     discount =Field()
+
+class PolyvoreData(Item):
+    name= Field()

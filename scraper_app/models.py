@@ -51,3 +51,11 @@ class JabongProducts(DeclarativeBase):
     previous_price = Column('previous_price', String)
     standard_price = Column('standard_price', String)
     discount = Column('discount', String)
+
+
+class PolyvoreProducts(DeclarativeBase):
+    """Sqlalchemy deals model"""
+    __tablename__ = "polyvoredata"
+
+    id = Column(Integer, primary_key=True)
+    name = Column('name', String)
