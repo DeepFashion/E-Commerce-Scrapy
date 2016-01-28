@@ -10,7 +10,7 @@ class FlipkartSpider(BaseSpider):
     name = "FlipkartBot"
     allowed_domains = ["flipkart.com"]
     start_urls=getURL()
-    custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.FilpkartPipeline"]}
+    custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.FlipkartPipeline"]}
     
     deals_list_xpath = '//div[@class="lifestyle-grid"]/div[@class="browse-grid-row"]/div[@class="unit size1of3"]/div'
     item_fields = {
