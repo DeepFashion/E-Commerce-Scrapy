@@ -9,6 +9,7 @@ class flipkartData(Item):
     finalPrice = Field()
     initialPrice = Field()
     discount = Field()
+    requestURL = Field()
 
 class JabongData(Item):
     product_link= Field()

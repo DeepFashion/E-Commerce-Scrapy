@@ -33,6 +33,7 @@ class FlipkartProducts(DeclarativeBase):
     finalPrice = Column('finalPrice', String)
     initialPrice = Column('initialPrice', String)
     discount = Column('discount', String)
+    requestURL = Column('requestURL', String)
 
 
 class JabongProducts(DeclarativeBase):
