@@ -22,7 +22,7 @@ def getURLSimple():
 	return start_urls
 
 def getURL():
-	category="shirts"
+	category="shirts-tops-tunics"
 	return getURLBrands(),category
 
 if __name__ == '__main__':
