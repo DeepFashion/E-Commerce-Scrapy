@@ -10,3 +10,5 @@ DATABASE = {
     'database': 'fashion'
 }
 
+
+DATABASE_NAMES=["flipkartdata","jabongdata","polyvoredata"]
