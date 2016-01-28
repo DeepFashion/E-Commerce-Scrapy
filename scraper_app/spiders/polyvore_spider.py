@@ -10,8 +10,8 @@ class PolyvoreSpider(BaseSpider):
     """Spider for Polyvore Website; Ladies collection: shirts, tees, etc"""
     name = "PolyvoreBot"
     allowed_domains = ["polyvore.com"]
-    start_urls=getURL()[:1]
-
+    start_urls=getURL()
+    
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.PolyvorePipeline"]}
 
     products_list_xpath = '//*[@id="body"]'
