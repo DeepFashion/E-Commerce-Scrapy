@@ -19,7 +19,7 @@ class FlipkartSpider(BaseSpider):
         'apparelURL': 'div[1]/a[1]/@href',
         'title': 'div[2]/div[1]/a/@title',
         'rating': 'div[2]/div[@class="pu-rating"]/div[1]/@title',
-        'finalPrice': 'div[2]/div[@class="pu-price"]/div[1]/span/text()', 
+        'finalPrice': 'div[2]/div[@class="pu-price"]/div[1]/span/text()',
         'initialPrice': 'div[2]/div[@class="pu-price"]/div[2]/span[1]/text()',
         'discount': 'div[2]/div[@class="pu-price"]/div[2]/span[2]/text()'
     }
@@ -30,7 +30,7 @@ class FlipkartSpider(BaseSpider):
 
         """
         selector = HtmlXPathSelector(response)
-        
+
         for deal in selector.select(self.deals_list_xpath):
             loader = XPathItemLoader(flipkartData(), selector=deal)
 
@@ -42,7 +42,7 @@ class FlipkartSpider(BaseSpider):
             for field, xpath in self.item_fields.iteritems():
                 loader.add_xpath(field, xpath)
 
-            # adding the request URL to the loader 
+            # adding the request URL to the loader
             loader.add_value("requestURL",unicode(response.request.url, "utf-8"))
 
             yield loader.load_item()
