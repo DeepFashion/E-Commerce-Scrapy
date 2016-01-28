@@ -25,3 +25,5 @@ class JabongData(Item):
 
 class PolyvoreData(Item):
     name= Field()
+    numlikes=Field()
+    

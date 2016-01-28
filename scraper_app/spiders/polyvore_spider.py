@@ -12,19 +12,10 @@ class PolyvoreSpider(BaseSpider):
     allowed_domains = ["polyvore.com"]
     start_urls=getURL()
 
-    products_list_xpath = '//*[@id="catalog-product"]/section[2]/div'
+    products_list_xpath = '//*[@id="body"]'
     item_fields = {
-        'product_link': 'a/@href',
-        'image_320' : 'a/figure/img/@data-src-320',
-        'image_500' : 'a/figure/img/@data-src-500',
-        'image_768' : 'a/figure/img/@data-src-768',
-        'image_1024' : 'a/figure/img/@data-src-1024',
-        'image_1280' : 'a/figure/img/@data-src-1280',
-        'brand' : 'a/div/div[1]/text()',
-        'name': 'a/div/div[1]/span[1]/text()',
-        'previous_price': 'a/div/div[2]/span[1]/span/text()',
-        'standard_price': 'a/div/div[2]/span[2]/text()',
-        'discount': 'a/div/div[2]/span[3]/text()'
+        'name' : '//*[@id="set_editor"]/h1/text()',
+        'numlikes': '//*[@id="right"]/ul[1]/li/span/span/span/text()'
     }
 
     def parse(self, response):

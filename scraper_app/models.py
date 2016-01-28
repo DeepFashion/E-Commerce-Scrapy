@@ -59,3 +59,4 @@ class PolyvoreProducts(DeclarativeBase):
 
     id = Column(Integer, primary_key=True)
     name = Column('name', String)
+    numlikes=Column('numlikes', String)

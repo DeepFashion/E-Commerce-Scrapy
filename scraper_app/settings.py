@@ -1,4 +1,4 @@
-SITE_NAME='Flipkart'
+SITE_NAME='Polyvore'
 
 BOT_NAME = SITE_NAME+'Bot'
 
