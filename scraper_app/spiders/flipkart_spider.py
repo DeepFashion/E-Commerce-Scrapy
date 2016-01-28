@@ -4,6 +4,8 @@ from scrapy.contrib.loader import XPathItemLoader
 from scrapy.contrib.loader.processor import Join, MapCompose
 from flipkartURLs import getURL
 from scraper_app.items import flipkartData
+import urllib
+from urlparse import urlparse
 
 class FlipkartSpider(BaseSpider):
 
@@ -31,6 +33,11 @@ class FlipkartSpider(BaseSpider):
         """
         selector = HtmlXPathSelector(response)
 
+        details=urlparse(response.request.url)
+        queryStr={x.split('=')[0]:(x.split('=')[1]) for x in details.query.split("&")}
+        print "\n",(urllib.unquote(queryStr['p%5B%5D']).split("=")[1]),queryStr['start']
+
+        
         for deal in selector.select(self.deals_list_xpath):
             loader = XPathItemLoader(flipkartData(), selector=deal)
 

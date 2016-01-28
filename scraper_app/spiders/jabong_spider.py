@@ -4,6 +4,8 @@ from scrapy.contrib.loader import XPathItemLoader
 from scrapy.contrib.loader.processor import Join, MapCompose
 from jabongURLs import getURL
 from scraper_app.items import JabongData
+import urllib
+from urlparse import urlparse
 
 
 class JabongSpider(BaseSpider):
@@ -35,6 +37,11 @@ class JabongSpider(BaseSpider):
         """
 
         selector = HtmlXPathSelector(response)
+
+
+        details=urlparse(response.request.url)
+        queryStr={x.split('=')[0]:(x.split('=')[1]) for x in details.query.split("&")}
+        print "\n",queryStr['page']
 
         # iterate over deals
         for deal in selector.select(self.products_list_xpath):

@@ -9,7 +9,7 @@ def getURLBrands():
 
 	start_urls=list()
 	for j in range(len(brandnames)):	
-		for i in range(1):
+		for i in range(99):
 			tempUrl="http://www.flipkart.com/lc/pr/pv1/spotList1/spot1/productList?p%5B%5D=facets.brand%255B%255D%3D"+urllib.quote(brandnames[j])+"&sid=2oq%2Cc1r%2Cha6%2Ccck&pincode=560034&filterNone=true&start="+str(15*i+1)+"&ajax=true&_=1453926601673"
 			start_urls.append(tempUrl)
 	return start_urls
