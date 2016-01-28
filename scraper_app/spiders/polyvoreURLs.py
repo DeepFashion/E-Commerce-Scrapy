@@ -1,3 +1,6 @@
+def getURL():
+	return []
+
 # def getURL():
 # 	start_urls=list()
 # 	for i in range(1,120):
