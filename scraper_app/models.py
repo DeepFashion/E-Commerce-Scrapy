@@ -12,10 +12,9 @@ def db_connect():
     Performs database connection using database settings from settings.py.
     Returns sqlalchemy engine instance
     """
-    print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
-    print settings.DATABASE
-    print "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+
     return create_engine(URL(**settings.DATABASE))
+
 
 
 def create_deals_table(engine):
