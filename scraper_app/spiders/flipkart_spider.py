@@ -9,7 +9,7 @@ class FlipkartSpider(BaseSpider):
 
     name = "FlipkartBot"
     allowed_domains = ["flipkart.com"]
-    start_urls=getURL()
+    start_urls,category=getURL()
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.FlipkartPipeline"]}
     
     deals_list_xpath = '//div[@class="lifestyle-grid"]/div[@class="browse-grid-row"]/div[@class="unit size1of3"]/div'
@@ -44,5 +44,8 @@ class FlipkartSpider(BaseSpider):
 
             # adding the request URL to the loader
             loader.add_value("requestURL",unicode(response.request.url, "utf-8"))
+
+            # adding the category for the request
+            loader.add_value("category",unicode(self.category))
 
             yield loader.load_item()

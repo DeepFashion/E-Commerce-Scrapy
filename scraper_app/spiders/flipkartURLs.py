@@ -22,7 +22,8 @@ def getURLSimple():
 	return start_urls
 
 def getURL():
-	return getURLBrands()
+	category="shirts"
+	return getURLBrands(),category
 
 if __name__ == '__main__':
 	print getURL()

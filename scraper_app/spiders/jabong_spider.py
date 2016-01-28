@@ -10,7 +10,7 @@ class JabongSpider(BaseSpider):
     """Spider for Jabong Website; Ladies collection: shirts, tees, etc"""
     name = "JabongBot"
     allowed_domains = ["jabong.com"]
-    start_urls=getURL()
+    start_urls,category=getURL()
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.JabongPipeline"]}
 
     products_list_xpath = '//*[@id="catalog-product"]/section[2]/div'
@@ -50,5 +50,9 @@ class JabongSpider(BaseSpider):
 
             # adding the request URL to the loader 
             loader.add_value("requestURL",unicode(response.request.url, "utf-8"))
+
+
+            # adding the category for the request
+            loader.add_value("category",unicode(self.category))
 
             yield loader.load_item()
