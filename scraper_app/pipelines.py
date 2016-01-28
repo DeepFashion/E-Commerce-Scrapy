@@ -25,9 +25,9 @@ class FlipkartPipeline(object):
         try:
             session.add(deal)
             session.commit()
-            print "success"
+            print "success",
         except:
-            print "rollback"
+            print "rollback",
             session.rollback()
             raise
         finally:
@@ -59,9 +59,9 @@ class JabongPipeline(object):
         try:
             session.add(deal)
             session.commit()
-            print "success"
+            print "success",
         except:
-            print "rollback"
+            print "rollback",
             session.rollback()
             raise
         finally:
@@ -92,9 +92,9 @@ class PolyvorePipeline(object):
         try:
             session.add(deal)
             session.commit()
-            print "success"
+            print "success",
         except:
-            print "rollback"
+            print "rollback",
             session.rollback()
             raise
         finally:
