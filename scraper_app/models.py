@@ -52,6 +52,7 @@ class JabongProducts(DeclarativeBase):
     previous_price = Column('previous_price', String)
     standard_price = Column('standard_price', String)
     discount = Column('discount', String)
+    requestURL = Column('requestURL', String)
 
 
 class PolyvoreProducts(DeclarativeBase):
@@ -60,3 +61,5 @@ class PolyvoreProducts(DeclarativeBase):
 
     id = Column(Integer, primary_key=True)
     name = Column('name', String)
+    numlikes=Column('numlikes', String)
+    requestURL = Column('requestURL', String)

@@ -11,6 +11,7 @@ class JabongSpider(BaseSpider):
     name = "JabongBot"
     allowed_domains = ["jabong.com"]
     start_urls=getURL()
+    custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.JabongPipeline"]}
 
     products_list_xpath = '//*[@id="catalog-product"]/section[2]/div'
     item_fields = {
@@ -46,4 +47,8 @@ class JabongSpider(BaseSpider):
             # iterate over fields and add xpaths to the loader
             for field, xpath in self.item_fields.iteritems():
                 loader.add_xpath(field, xpath)
+
+            # adding the request URL to the loader 
+            loader.add_value("requestURL",unicode(response.request.url, "utf-8"))
+
             yield loader.load_item()

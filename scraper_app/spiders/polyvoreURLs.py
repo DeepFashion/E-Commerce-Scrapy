@@ -1,5 +1,10 @@
 def getURL():
-	return []
+	urls = list()
+	with open('polyvore-sets.txt') as f:
+		urls = f.readlines()
+	for i in range(len(urls)):
+		urls[i]=urls[i].strip()
+	return urls
 
 # def getURL():
 # 	start_urls=list()

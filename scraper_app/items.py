@@ -23,6 +23,10 @@ class JabongData(Item):
     previous_price =Field()
     standard_price =Field()
     discount =Field()
+    requestURL = Field()
 
 class PolyvoreData(Item):
     name= Field()
+    numlikes=Field()
+    requestURL = Field()
+    
