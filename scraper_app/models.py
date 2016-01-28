@@ -67,3 +67,8 @@ class PolyvoreProducts(DeclarativeBase):
     name = Column('name', String)
     numlikes=Column('numlikes', String)
     requestURL = Column('requestURL', String)
+    productName=Column('productName', String)
+    productURL=Column('productURL', String)
+    productPrice=Column('productPrice', String)
+    productImage=Column('productImage', String)
+    productNumLikes=Column('productNumLikes', String)

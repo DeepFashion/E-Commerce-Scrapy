@@ -31,4 +31,8 @@ class PolyvoreData(Item):
     name= Field()
     numlikes=Field()
     requestURL = Field()
-    
+    productName=Field()
+    productURL=Field()
+    productPrice=Field()
+    productImage=Field()
+    productNumLikes=Field()
