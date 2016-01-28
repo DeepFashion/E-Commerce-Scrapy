@@ -12,3 +12,5 @@ DATABASE = {
 
 
 DATABASE_NAMES=["flipkartdata","jabongdata","polyvoredata"]
+
+LOG_LEVEL = 'INFO'
