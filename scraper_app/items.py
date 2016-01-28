@@ -10,6 +10,7 @@ class flipkartData(Item):
     initialPrice = Field()
     discount = Field()
     requestURL = Field()
+    category = Field()
 
 class JabongData(Item):
     product_link= Field()
@@ -24,6 +25,7 @@ class JabongData(Item):
     standard_price =Field()
     discount =Field()
     requestURL = Field()
+    category = Field()
 
 class PolyvoreData(Item):
     name= Field()

@@ -3,7 +3,6 @@ from models import db_connect
 import optparse
 import settings
 
-
 def parse_args():
 
 	usage="""
@@ -25,7 +24,6 @@ def parse_args():
 	    parser.error('Provide atleast single flag')
 	elif options.db and options.all:
 		parser.error('Provide only single flag')
-
 
 	return options
 

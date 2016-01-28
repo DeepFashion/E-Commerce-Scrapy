@@ -36,6 +36,7 @@ class FlipkartProducts(DeclarativeBase):
     initialPrice = Column('initialPrice', String)
     discount = Column('discount', String)
     requestURL = Column('requestURL', String)
+    category = Column('category', String)
 
 
 class JabongProducts(DeclarativeBase):
@@ -55,6 +56,7 @@ class JabongProducts(DeclarativeBase):
     standard_price = Column('standard_price', String)
     discount = Column('discount', String)
     requestURL = Column('requestURL', String)
+    category = Column('category', String)
 
 
 class PolyvoreProducts(DeclarativeBase):
