@@ -10,4 +10,3 @@ DATABASE = {
     'database': 'fashion'
 }
 
-
