@@ -33,6 +33,8 @@ class FlipkartSpider(BaseSpider):
         """
         selector = HtmlXPathSelector(response)
 
+        print selector
+
         details=urlparse(response.request.url)
         queryStr={x.split('=')[0]:(x.split('=')[1]) for x in details.query.split("&")}
         print "\n",(urllib.unquote(queryStr['p%5B%5D']).split("=")[1]),queryStr['start']

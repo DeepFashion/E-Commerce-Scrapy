@@ -11,6 +11,6 @@ DATABASE = {
 }
 
 
-DATABASE_NAMES=["flipkartdata","jabongdata","polyvoredata"]
+DATABASE_NAMES=["flipkartdata","jabongdata","polyvoredata",'flipkartpagedata']
 
 LOG_LEVEL = 'INFO'

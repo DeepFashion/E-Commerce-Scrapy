@@ -36,3 +36,10 @@ class PolyvoreData(Item):
     productPrice=Field()
     productImage=Field()
     productNumLikes=Field()
+
+class FlipkartPageData(Item):
+    keyFeatures = Field()
+    specs = Field() 
+    rating = Field()
+    descriptionText=Field()
+    requestURL=Field()

@@ -72,3 +72,15 @@ class PolyvoreProducts(DeclarativeBase):
     productPrice=Column('productPrice', String)
     productImage=Column('productImage', String)
     productNumLikes=Column('productNumLikes', String)
+
+
+class FlipkartPageProducts(DeclarativeBase):
+    """Sqlalchemy deals model"""
+    __tablename__ = "flipkartpagedata"
+    id = Column(Integer, primary_key=True)
+    keyFeatures = Column('keyFeatures', String)
+    specs = Column('specs', String)
+    rating = Column('rating', String)
+    descriptionText= Column('descriptionText', String)
+    requestURL=Column('requestURL', String)
+
