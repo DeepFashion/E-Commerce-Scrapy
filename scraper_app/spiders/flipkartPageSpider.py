@@ -16,10 +16,10 @@ class FlipkartPageSpider(BaseSpider):
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.FlipkartPagePipeline"]}
     
     item_fields = {
-        'keyFeatures': '//*[@id="fk-mainbody-id"]/div/div/div/div[@class="keyFeatures specSection"]/ul ',
+        'keyFeatures': '//*[@class="keyFeatures specSection"]/ul',
         'specs' : '//*[@class="productSpecs specSection"]/table[@class="specTable"]',
-        'rating': '//*[@id="fk-mainbody-id"]/div/div/div/div/div/div/div/div/ul[@class="ratingsDistribution"]/li',
-        'descriptionText': '//*[@id="fk-mainbody-id"]/div/div/div/div[@class="description specSection"]/div[@class="description-text"]/text()'
+        'rating': '//*[@class="ratingsDistribution"]/li',
+        'descriptionText': '//*[@class="description specSection"]/div[@class="description-text"]/text()'
     }
 # 'specs':  '//*[@id="fk-mainbody-id"]/div/div/div/div[@class="productSpecs specSection"]/table[@class="specTable"]',
     # //*[@id="fk-mainbody-id"]/div/div/div/div[@class="productSpecs specSection"]
@@ -29,12 +29,15 @@ class FlipkartPageSpider(BaseSpider):
         Default callback used by Scrapy to process downloaded responses
 
         """
-        with open('f1','w+') as f:
-            f.write(response.body)
+        # with open('f1','w+') as f:
+        #     f.write(response.body)
         
         selector = HtmlXPathSelector(response)
         x=selector.select(self.item_fields['keyFeatures'])
+        # print x.extract()
         y=x.select('li/text()')
+        # print x.extract()
+        # print y.extract()
         keyFeaturesList=list()
         tablesExtracted=dict()
         ratingExtracted=dict()
@@ -75,4 +78,5 @@ class FlipkartPageSpider(BaseSpider):
         obj['rating']=json.dumps(ratingExtracted)
         obj['descriptionText']=json.dumps(descriptionText)
         obj["requestURL"]=unicode(response.request.url, "utf-8")
-        return obj
+        # print obj
+        yield obj
