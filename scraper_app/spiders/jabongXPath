@@ -1,0 +1,11 @@
+//*[@itemprop="brand"]/text() ::brand
+//*[@class="product-title"]/text() ::product-title
+
+//*[@id="productInfo"]/section/ul  : set of li tags
+correct
+//*[@id="productInfo"]/section/div/h2 : othere description
+comes in variations
+1) text()
+2) p/text()
+3) p/text()
+   <li></li>

@@ -43,3 +43,10 @@ class FlipkartPageData(Item):
     rating = Field()
     descriptionText=Field()
     requestURL=Field()
+
+class JabongPageData(Item):
+    brand = Field()
+    productTitle = Field() 
+    desc1 = Field()
+    desc2 =Field()
+    requestURL = Field()
