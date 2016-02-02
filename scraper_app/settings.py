@@ -10,7 +10,9 @@ DATABASE = {
     'database': 'fashion'
 }
 
+DOWNLOAD_HANDLERS = {'s3': None,}
 
-DATABASE_NAMES=["flipkartdata","jabongdata","polyvoredata"]
+
+DATABASE_NAMES=["flipkartdata","jabongdata","polyvoredata",'flipkartpagedata','jabongpagedata']
 
 LOG_LEVEL = 'INFO'
