@@ -11,7 +11,7 @@ class PolyvoreSpider(BaseSpider):
     name = "PolyvoreBot"
     allowed_domains = ["polyvore.com"]
     start_urls=getURL()
-    
+
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.PolyvorePipeline"]}
 
     products_list_xpath = '//*[@id="body"]'
@@ -33,6 +33,9 @@ class PolyvoreSpider(BaseSpider):
         Default callback used by Scrapy to process downloaded responses
 
         """
+        # with open('polydata/'+response.url.split('=')[1], 'wb') as f:
+        #     f.write(response.body)
+        # scraped_url_list = list()
 
         selector = HtmlXPathSelector(response)
 
@@ -50,6 +53,7 @@ class PolyvoreSpider(BaseSpider):
             # adding the request URL to the loader 
             loader.add_value("requestURL",unicode(response.request.url, "utf-8"))
 
+            # scraped_url_list.append(loader.load_item()['requestURL'])
 
             for item in deal.xpath('//*[@id="content"]/ul[1]/li'):
                 ll = XPathItemLoader(PolyvoreData(), selector=item)
@@ -78,3 +82,6 @@ class PolyvoreSpider(BaseSpider):
                 ll.add_value("name", loader.load_item()['name'])
                 ll.add_value("numlikes", loader.load_item()['numlikes'])
                 yield ll.load_item()
+
+        # with open('poly-scraped-urls.txt', 'w') as f:
+        #     f.write("\n".join(scraped_url_list))
