@@ -27,7 +27,11 @@ def getURLSimple():
 	# start_urls.append('http://www.flipkart.com/hbhwear-solid-women-s-polo-neck-t-shirt/p/itme4g769excshzj?pid=TSHE4G76CXHXU456&al=ThsGnZDjLFEZTQtAEV05F8ldugMWZuE7wkNiXfq8GiR%2FMBq1PENgcSTIaBkyV9pqxSpxi8SNpDQ%3D&ref=L%3A145924790153660934&srno=b_14')
 	# start_urls.append('http://www.flipkart.com/hbhwear-solid-women-s-polo-neck-t-shirt/p/itme4g76ystz3jjh?pid=TSHE4G76ZFNBKZ6C&icmpid=reco_pp_personalhistoryFooter_womenclothing_na_5')
 	# start_urls.append('http://www.flipkart.com/vero-moda-casual-women-s-top/p/itme8fmfnx7ukhsv?pid=TOPE8FMFGT5PFZHS&al=oTeXb3%2BdcWfgcf7QcZVhIsldugMWZuE7wkNiXfq8GiTNzsLCzdMSnQxbkyR58oGhUMkqngEt3uU%3D&ref=L%3A3444917640624687878&srno=b_107')
-	start_urls.append('http://www.jabong.com/dorothy-perkins-Oversize-Denim-Shirt-1868176.html?pos=10')
+	# start_urls.append('http://www.jabong.com/only-White-Printed-T-Shirt-1615654.html?pos=1')
+	start_urls.append('http://www.jabong.com/miss-bennett-london-Navy-Blue-Checked-Crop-Shirt-1702011.html?pos=2')
+	# List
+	# start_urls.append('http://www.jabong.com/vero-moda-Orange-Printed-T-Shirt-1903841.html?pos=4')
+	# p/text
 	return start_urls
 	# return process_item()
 

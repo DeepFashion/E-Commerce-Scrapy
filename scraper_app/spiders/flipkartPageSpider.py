@@ -14,30 +14,25 @@ class FlipkartPageSpider(BaseSpider):
     allowed_domains = ["flipkart.com"]
     start_urls=getURL()
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.FlipkartPagePipeline"]}
-    
+    # 
     item_fields = {
-        'keyFeatures': '//*[@class="keyFeatures specSection"]/ul',
+        'keyFeatures': '//*[@class="specifications-wrap line unit"]/ul',
         'specs' : '//*[@class="productSpecs specSection"]/table[@class="specTable"]',
         'rating': '//*[@class="ratingsDistribution"]/li',
         'descriptionText': '//*[@class="description specSection"]/div[@class="description-text"]/text()'
     }
-# 'specs':  '//*[@id="fk-mainbody-id"]/div/div/div/div[@class="productSpecs specSection"]/table[@class="specTable"]',
-    # //*[@id="fk-mainbody-id"]/div/div/div/div[@class="productSpecs specSection"]
 
     def parse(self, response):
         """
         Default callback used by Scrapy to process downloaded responses
 
         """
-        # with open('f1','w+') as f:
-        #     f.write(response.body)
+        with open('f1','w+') as f:
+            f.write(response.body)
         
         selector = HtmlXPathSelector(response)
         x=selector.select(self.item_fields['keyFeatures'])
-        # print x.extract()
         y=x.select('li/text()')
-        # print x.extract()
-        # print y.extract()
         keyFeaturesList=list()
         tablesExtracted=dict()
         ratingExtracted=dict()
@@ -62,8 +57,6 @@ class FlipkartPageSpider(BaseSpider):
                         break
             tablesExtracted[tableName]=tableEntry
 
-
-
         x=selector.select(self.item_fields['rating'])
         for element in x:
             ratingExtracted[element.select('a/span/text()').extract()[0]]=element.select('a/div/div/text()').extract()[0]
@@ -78,5 +71,5 @@ class FlipkartPageSpider(BaseSpider):
         obj['rating']=json.dumps(ratingExtracted)
         obj['descriptionText']=json.dumps(descriptionText)
         obj["requestURL"]=unicode(response.request.url, "utf-8")
-        # print obj
+        print obj
         yield obj

@@ -7,6 +7,9 @@ from scraper_app.items import JabongPageData
 import urllib
 from urlparse import urlparse
 import json
+import re
+from lxml import etree
+from io import StringIO, BytesIO
 
 class JabongPageSpider(BaseSpider):
 
@@ -19,7 +22,10 @@ class JabongPageSpider(BaseSpider):
         'brand': '//*[@itemprop="brand"]/text()',
         'product-title' : '//*[@class="product-title"]/text()',
         'desc1': '//*[@id="productInfo"]/section/ul/li',
-        'desc2': '//*[@class="prod-disc"]/p/text()'
+        'desc2_1': '//div/text()',
+        'desc2_2': '//div/p/text()',
+        'desc2_3': '//div/ul/li/text()'
+
     }
 
     def parse(self, response):
@@ -27,58 +33,56 @@ class JabongPageSpider(BaseSpider):
         Default callback used by Scrapy to process downloaded responses
 
         """
-        with open('f1','w+') as f:
-            f.write(response.body)
         obj=JabongPageData()
-        
         selector = HtmlXPathSelector(text=response.body)
-        x=selector.select(self.item_fields['brand'])
-        obj['brand']=x[0].extract()
-        x=selector.select(self.item_fields['product-title'])
-        obj['productTitle']=x[0].extract()
-        x=selector.select(self.item_fields['desc1'])
-        data=dict()
-        for element in x:
-            key=element.select('label/text()').extract()[0]
-            val=element.select('span/text()').extract()[0]
-            data[key]=val
+        str1=response.body
+        pattern1='<h2 class="prod-disc" itemprop="description">'
+        pattern2='</h2>'
+        index1=str1.index(pattern1)
+        index2=str1.index(pattern2)
+        tempRes=str1[index1+45:index2]
+        try:
+            tempResponse="<div>"+tempRes+"</div>"
+            parser = etree.HTMLParser()
+            tree   = etree.parse(StringIO(unicode(tempResponse, "utf-8")), parser)
+            data=list()
+            x=tree.xpath(self.item_fields['desc2_1'])
+            for element in x:
+                element=element.strip()
+                if element:
+                    data.append(element)
 
-        x=selector.select(self.item_fields['desc2'])
-        print "####################"
-        print x
-        print x.extract()
-        print "####################"
-
-        # for element in x:
-        #     res1=element.select('text()')
-        #     for res in res1:
-        #         print res
-
-        #     res1=element.select('p/text()')
-        #     for res in res1:
-        #         print "####################"
-        #         print res
-        #         print "####################"
-
-        #     y=element.select('ul/li/text()')
-        #     for listElement in y:
-        #         print listElement.extract()
-
-
-        
-        obj['desc1']=json.dumps(data)
-        if len(x.extract()) > 0:
-            obj['desc2']= x.extract()[0]
-        else:
+            x=tree.xpath(self.item_fields['desc2_2'])
+            for element in x:
+                element=element.strip()
+                if element:
+                    data.append(element)
+            x=tree.xpath(self.item_fields['desc2_3'])
+            tdata=""
+            for element in x:
+                element=element.strip()
+                if element:
+                    tdata=tdata+element+","
+            if tdata:
+                tdata=tdata[:-1]
+                data.append(tdata)
+            obj['desc2']=json.dumps(data)
+        except:
+            print 'count not get h2 data'
             obj['desc2']=""
 
-        obj['requestURL']=unicode(response.request.url, "utf-8")
 
+        x=selector.xpath(self.item_fields['brand'])
+        obj['brand']=x[0].extract()
+        x=selector.xpath(self.item_fields['product-title'])
+        obj['productTitle']=x[0].extract()
+        x=selector.xpath(self.item_fields['desc1'])
+        data=dict()
+        for element in x:
+            key=element.xpath('label/text()').extract()[0]
+            val=element.xpath('span/text()').extract()[0]
+            data[key]=val
+        obj['desc1']=json.dumps(data)
+        obj['requestURL']=unicode(response.request.url, "utf-8")
         print obj
-        # =json.dumps(keyFeaturesList)
-        # obj['specs']=json.dumps(tablesExtracted)
-        # obj['rating']=json.dumps(ratingExtracted)
-        # obj['descriptionText']=json.dumps(descriptionText)
-        # obj["requestURL"]=unicode(response.request.url, "utf-8")
-        # print obj
         yield obj
