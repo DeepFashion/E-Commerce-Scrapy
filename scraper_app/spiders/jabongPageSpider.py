@@ -79,6 +79,8 @@ class JabongPageSpider(BaseSpider):
         x=selector.xpath(self.item_fields['desc1'])
         data=dict()
         for element in x:
+            print "enterd"
+            print element.xpath('label/text()').extract()
             key=element.xpath('label/text()').extract()[0]
             val=element.xpath('span/text()').extract()[0]
             data[key]=val
