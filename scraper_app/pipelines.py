@@ -168,3 +168,20 @@ class JabongPagePipeline(object):
             session.close()
 
         return item
+
+class ImagePipeline(object):
+    """Flipkart pipeline for storing scraped items in the database"""
+    def __init__(self):
+        """
+        Initializes database connection and sessionmaker.
+        Creates deals table.
+        """
+        pass
+
+    def process_item(self, item, spider):
+        """Save deals in the database.
+
+        This method is called for every item pipeline component.
+
+        """
+        pass
