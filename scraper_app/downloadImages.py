@@ -25,11 +25,11 @@ class DownloadImagesFlipkart(object):
 
 	def process_item(self):
 		engine = self.engine
-		offset=0;stepSize=41080
+		offset=41080;stepSize=41080+20000
 		count=engine.execute("select count(*) from "+self.database);
 		numImages=count.fetchall()[0][0]
 		while offset < numImages:
-			query="select \"id\",\"mainImage\",\"images\" from "+self.database+"order by id limit "+str(stepSize)+" offset "+str(offset)
+			query="select \"id\",\"mainImage\",\"images\" from "+self.database+" order by id limit "+str(stepSize)+" offset "+str(offset)
 			queryRes=engine.execute(query)
 			for element in queryRes.fetchall():
 				l=element[2].split('|')
@@ -57,11 +57,11 @@ class DownloadImagesJabong(object):
 
 	def process_item(self):
 		engine = self.engine
-		offset=0;stepSize=36000
+		offset=0;stepSize=18000
 		count=engine.execute("select count(*) from "+self.database);
 		numImages=count.fetchall()[0][0]
 		while offset < numImages:
-			query="select \"id\",\"image_320\",\"image_500\",\"image_768\",\"image_1024\",\"image_1280\" from "+self.database+"order by id limit "+str(stepSize)+" offset "+str(offset)
+			query="select \"id\",\"image_320\",\"image_500\",\"image_768\",\"image_1024\",\"image_1280\" from "+self.database+" order by id limit "+str(stepSize)+" offset "+str(offset)
 			queryRes=engine.execute(query)
 			
 			for element in queryRes.fetchall():
