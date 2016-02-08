@@ -68,7 +68,7 @@ class JabongPageSpider(BaseSpider):
                 data.append(tdata)
             obj['desc2']=json.dumps(data)
         except:
-            print 'count not get h2 data'
+            print 'could not get h2 data'
             obj['desc2']=""
 
 
@@ -84,5 +84,4 @@ class JabongPageSpider(BaseSpider):
             data[key]=val
         obj['desc1']=json.dumps(data)
         obj['requestURL']=unicode(response.request.url, "utf-8")
-        print obj
         yield obj

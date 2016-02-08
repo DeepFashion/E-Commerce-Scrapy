@@ -27,8 +27,8 @@ class FlipkartPageSpider(BaseSpider):
         Default callback used by Scrapy to process downloaded responses
 
         """
-        with open('f1','w+') as f:
-            f.write(response.body)
+        # with open('f1','w+') as f:
+        #     f.write(response.body)
         
         selector = HtmlXPathSelector(response)
         x=selector.select(self.item_fields['keyFeatures'])
@@ -71,5 +71,5 @@ class FlipkartPageSpider(BaseSpider):
         obj['rating']=json.dumps(ratingExtracted)
         obj['descriptionText']=json.dumps(descriptionText)
         obj["requestURL"]=unicode(response.request.url, "utf-8")
-        print obj
+        # print obj
         yield obj
