@@ -12,8 +12,8 @@ from models import db_connect
 def process_item():
 		engine=db_connect()
 		database="jabongdata"
-		stepSize=10000
-		offset=0
+		stepSize=25000
+		offset=50000
 		query="select \"id\",\"image_320\",\"image_500\",\"image_768\",\"image_1024\",\"image_1280\" from "+database+" order by id limit "+str(stepSize)+" offset "+str(offset)
 		queryRes=engine.execute(query)
 		result=list()

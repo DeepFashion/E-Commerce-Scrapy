@@ -9,12 +9,12 @@ import json
 
 class ImageSpider(BaseSpider):
 
-    name = "ImageJabongBot"
+    name = "ImageJabong123"
     allowed_domains = []
     start_urls=getURL()
     custom_settings={"ITEM_PIPELINES" : ["scraper_app.pipelines.ImagePipeline"]}
     item_fields = {}
-    folderName='/home/siddhantmanocha/Projects/jabongImages/'
+    folderName='/home/siddhantmanocha/Projects/testImages/'
 
     def parse(self, response):
         """
@@ -23,7 +23,7 @@ class ImageSpider(BaseSpider):
         """
         with open(self.folderName+(response.url).replace('/','_'),'w+') as f:
             f.write(response.body)
-        
+        print self.folderName
         obj={}
 
         print "success"

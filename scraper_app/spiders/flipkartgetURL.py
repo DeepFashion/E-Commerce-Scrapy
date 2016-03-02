@@ -12,8 +12,8 @@ from models import db_connect
 def process_item():
 		engine=db_connect()
 		database="flipkartdata"
-		stepSize=10000
-		offset=0
+		stepSize=30000
+		offset=50000
 		query="select \"id\",\"mainImage\",\"images\" from "+database+" order by id limit "+str(stepSize)+" offset "+str(offset)
 		queryRes=engine.execute(query)
 		result=list()
